@@ -24,7 +24,6 @@ const postMessage = async () => {
     context.debug("Building the message");
     context.debug("Optional", optional());
     console.log("Building the message");
-    console.debugExtra("Optional", optional());
     console.info("Optional", optional());
     const payload = buildMessage(channel, text, optional());
 
