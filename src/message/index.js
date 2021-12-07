@@ -11,10 +11,17 @@ const postMessage = async () => {
     const channels = context.getRequired("slack-channel");
     const text = context.getRequired("slack-text");
 
+    context.debug("Prepare");
+
     const results = [];
     for (let channel of channels.split(",")) {
       channel = channel.trim();
 
+      context.debug("Building the message");
+      context.debug("Optional", optional());
+      console.log("Building the message");
+      console.debugExtra("Optional", optional());
+      console.info("Optional", optional());
       const payload = buildMessage(channel, text, optional());
 
       context.debug("Post Message PAYLOAD", payload);
@@ -41,7 +48,7 @@ const tryParseJSON = (string) => {
   } catch (e) {
     return string;
   }
-}
+};
 
 const optional = () => {
   let opt = {};
