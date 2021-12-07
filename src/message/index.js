@@ -35,6 +35,14 @@ const postMessage = async () => {
   }
 };
 
+const tryParseJSON = (string) => {
+  try {
+    return JSON.parse(string);
+  } catch (e) {
+    return string;
+  }
+}
+
 const optional = () => {
   let opt = {};
 
@@ -44,7 +52,7 @@ const optional = () => {
     .filter((key) => key.toUpperCase().startsWith("INPUT_SLACK-OPTIONAL-"))
     .forEach((key) => {
       const slackKey = key.replace("INPUT_SLACK-OPTIONAL-", "").toLowerCase();
-      opt[slackKey] = env[key];
+      opt[slackKey] = tryParseJSON(env[key]);
     });
 
   return opt;
