@@ -720,6 +720,10 @@ const core = __nccwpck_require__(186);
 const jsonPretty = (data) => JSON.stringify(data, undefined, 2);
 
 const postMessage = async () => {
+  context.debug("debug: Before try");
+  context.info("info: Before try");
+  context.debugExtra("debugExtra: Before try");
+  context.warning("warning: Before try");
   try {
     const token = context.getRequired("slack-bot-user-oauth-access-token");
     const channels = context.getRequired("slack-channel");
